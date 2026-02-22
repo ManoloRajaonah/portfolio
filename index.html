@@ -1,1 +1,191 @@
-Manolo
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manolo Raj - Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        :root {
+            --bg-color: #0b0b0b;
+            --card-bg: #ffffff;
+            --text-color: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Header & Footer */
+        header, footer {
+            padding: 3% 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-transform: lowercase;
+            font-size: 13px;
+            letter-spacing: 0.15em;
+            font-weight: 300;
+        }
+
+        /* Style commun des flèches */
+        .arrow-icon {
+            width: 60px;
+            height: 1px;
+            background: white;
+            position: relative;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        .arrow-icon::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -3px;
+            width: 6px;
+            height: 6px;
+            border-top: 1px solid white;
+            border-right: 1px solid white;
+            transform: rotate(45deg);
+        }
+        
+        /* Flèche gauche (miroir) */
+        .arrow-left {
+            transform: scaleX(-1);
+        }
+
+        /* Navigation centrale */
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #page-number {
+            min-width: 50px;
+            text-align: center;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Slider Container */
+        .swiper {
+            width: 100%;
+            flex-grow: 1;
+            padding: 50px 0;
+        }
+
+        .swiper-slide {
+            width: 50vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            opacity: 0.2;
+            filter: grayscale(100%);
+        }
+
+        .swiper-slide-active {
+            opacity: 1;
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+
+        .slide-content {
+            width: 100%;
+            background-color: var(--card-bg);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .slide-content img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .swiper-slide { width: 280px; }
+            .arrow-icon { width: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div></div>
+        <div>Graphiste - Designer graphique</div>
+    </header>
+
+    <main class="swiper mySwiper">
+        <div class="swiper-wrapper" id="slider-wrapper"></div>
+    </main>
+
+    <footer>
+        <div id="slide-name">PORTFOLIO</div>
+        
+        <div class="nav-controls">
+            <div class="arrow-icon arrow-left" id="prevBtn"></div>
+            <div id="page-number">01 / 29</div>
+            <div class="arrow-icon" id="nextBtn"></div>
+        </div>
+
+        <div>Manolo RAJAONAH</div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        const wrapper = document.getElementById('slider-wrapper');
+        const totalSlides = 29;
+
+        // Génération des slides
+        for (let i = 1; i <= totalSlides; i++) {
+            const index = i.toString().padStart(2, '0');
+            const slide = `
+                <div class="swiper-slide">
+                    <div class="slide-content">
+                        <img src="images/e2c55df8-${index}.png" alt="Asset ${index}">
+                    </div>
+                </div>`;
+            wrapper.innerHTML += slide;
+        }
+
+        // Initialisation Swiper
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            loop: true,
+            speed: 800,
+            mousewheel: true,
+            keyboard: true,
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 150,
+                modifier: 1,
+                slideShadows: false,
+            },
+            on: {
+                // Mise à jour du numéro de page lors du changement de slide
+                slideChange: function () {
+                    const current = (this.realIndex + 1).toString().padStart(2, '0');
+                    const total = totalSlides.toString().padStart(2, '0');
+                    document.getElementById('page-number').innerText = `${current} / ${total}`;
+                }
+            }
+        });
+
+        // Événements pour les boutons personnalisés
+        document.getElementById('prevBtn').addEventListener('click', () => swiper.slidePrev());
+        document.getElementById('nextBtn').addEventListener('click', () => swiper.slideNext());
+    </script>
+</body>
+</html>
