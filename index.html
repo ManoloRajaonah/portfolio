@@ -13,40 +13,6 @@
             --text-color: #ffffff;
         }
 
-        /* Spinner Styles */
-        #loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--bg-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease, visibility 0.5s;
-        }
-
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-top: 2px solid #ffffff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .loaded #loader {
-            opacity: 0;
-            visibility: hidden;
-        }
-
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
@@ -56,6 +22,51 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
+        }
+
+        /* Styles du Spinner individuel */
+        .slide-content {
+            position: relative;
+            width: 100%;
+            min-height: 300px; /* Évite que le slide soit plat avant le chargement */
+            background-color: var(--card-bg);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .inner-spinner {
+            width: 30px;
+            height: 30px;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            border-top: 2px solid #333; /* Noir sur fond blanc du card-bg */
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            position: absolute;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .slide-content img {
+            width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 2;
+        }
+
+        /* Classe appliquée quand l'image est chargée */
+        .img-loaded img {
+            opacity: 1;
+        }
+        .img-loaded .inner-spinner {
+            display: none;
         }
 
         /* Header & Footer */
@@ -70,7 +81,6 @@
             font-weight: 300;
         }
 
-        /* Style commun des flèches */
         .arrow-icon {
             width: 60px;
             height: 1px;
@@ -91,12 +101,8 @@
             transform: rotate(45deg);
         }
         
-        /* Flèche gauche (miroir) */
-        .arrow-left {
-            transform: scaleX(-1);
-        }
+        .arrow-left { transform: scaleX(-1); }
 
-        /* Navigation centrale */
         .nav-controls {
             display: flex;
             align-items: center;
@@ -132,29 +138,14 @@
             transform: scale(1.1);
         }
 
-        .slide-content {
-            width: 100%;
-            background-color: var(--card-bg);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
-
-        .slide-content img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
         @media (max-width: 768px) {
             .swiper-slide { width: 280px; }
             .arrow-icon { width: 40px; }
+            .slide-content { min-height: 150px; }
         }
     </style>
 </head>
 <body>
-
-    <div id="loader">
-        <div class="spinner"></div>
-    </div>
 
     <header>
         <div><img width="70px" src="logo.png"/></div>
@@ -182,34 +173,19 @@
     <script>
         const wrapper = document.getElementById('slider-wrapper');
         const totalSlides = 31;
-        let imagesLoaded = 0;
 
-        // Génération des slides
+        // Génération des slides avec spinner interne
         for (let i = 1; i <= totalSlides; i++) {
             const index = i.toString().padStart(2, '0');
             const slide = `
                 <div class="swiper-slide">
-                    <div class="slide-content">
-                        <img src="images/bf304353-${index}.png" alt="Asset ${index}" onload="checkImages()">
+                    <div class="slide-content" id="container-${index}">
+                        <div class="inner-spinner"></div>
+                        <img src="images/bf304353-${index}.png" alt="Asset ${index}" onload="this.parentElement.classList.add('img-loaded')">
                     </div>
                 </div>`;
             wrapper.innerHTML += slide;
         }
-
-        // Fonction pour masquer le loader
-        function checkImages() {
-            imagesLoaded++;
-            if (imagesLoaded >= totalSlides) {
-                document.body.classList.add('loaded');
-            }
-        }
-
-        // Sécurité au cas où une image échouerait ou si le chargement est trop long
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.body.classList.add('loaded');
-            }, 3000); 
-        });
 
         // Initialisation Swiper
         var swiper = new Swiper(".mySwiper", {
