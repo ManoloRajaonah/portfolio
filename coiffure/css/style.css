@@ -1,0 +1,248 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, sans-serif;
+    line-height: 1.6;
+}
+
+main {
+    max-width: 1500px;
+    margin: auto;
+    padding: 0 20px;
+
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 30px;
+}
+
+.hero {
+    position: relative;
+    min-height: 100%;
+    overflow: hidden;
+    grid-column: 1 / -1;
+    overflow: hidden;
+}
+
+.hero-img {
+    width: 100%;
+    display: block;
+    object-fit: container-fluid;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        360deg,
+        rgba(0,0,0,0.75) 0%,
+        rgba(102,102,102,0) 100%
+    );
+}
+
+.title-hero {
+    position: absolute;
+    left: 120px;
+    top: 50%;
+    color: white;
+    font-size: clamp(2rem, 5vw, 5rem);
+    font-family: "Playfair Display", serif;
+    margin: 0;
+}
+
+.btn-offres {
+    position: absolute;
+    left: 120px;
+    top: 65%;
+    transform: translateY(10px);
+    padding: 20px 50px;
+    background: #76380E;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition : 0.5s;
+    text-decoration: none;
+    border: 1px solid rgba(0, 0, 0, 0.0);
+}
+.btn-offres:hover{
+    color: #76380E;
+    border: 1px solid #76380E;
+    background: none;
+}
+
+.nav {
+    position: sticky;
+    top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    padding: 20px;
+    z-index: 2;
+    background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
+    backdrop-filter: blur(5px);
+    grid-column: 1 / -1;
+    transform: translateY(-15px);
+}
+
+.nav a {
+    text-decoration: none;
+    color: white;
+    padding: 16px 50px;
+    border: 1px solid transparent;
+    transition: 0.3s;
+}
+
+.nav a:hover,
+.nav .active {
+    border-color: white;
+}
+
+.title-main {
+    text-align: center;
+    color: #9E5313;
+    font-size: clamp(2rem, 5vw, 5rem);
+    margin: 50px 0;
+    font-family: "Playfair Display", serif;
+    grid-column: 1 / -1;
+}
+
+.section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 80px;
+    grid-column: 1 / -1;
+}
+
+.section img,
+.img-right,
+.img-left {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+.section-content {
+    line-height: 1.8;
+}
+
+.section-content h3 {
+    margin-top: 0;
+    font-size: 30px;
+}
+
+/* inverse image / texte */
+.section.reverse img {
+    order: 2;
+}
+
+.section.reverse .section-content {
+    order: 1;
+}
+.contact-form .input-group {
+    margin-bottom: 18px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #76380E;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #76380E;
+    background: white;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    background: #76380E;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    color: #76380E;
+    border: 1px solid #76380E;
+    background: none;
+    transition: 0.5s;
+}
+button:hover{
+    background:#76380E;
+    color: white;
+}
+
+
+/* Couleur personnalisée basée sur votre image */
+.custom-footer {
+    background-color: #76380E; 
+    color: white;
+    padding: 25px 0;
+}
+
+/* On s'assure que le container garde une marge sur les côtés */
+.custom-footer .container-fluid {
+    padding: 0 40px;
+}
+
+.copyright {
+    font-size: 1rem;
+    font-family: sans-serif;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 1.3rem;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.social-icons a:hover {
+    color: #d1d1d1;
+    transform: scale(1.1);
+}
+
+
+@media (max-width: 900px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    .hero,
+    .nav,
+    .title-main,
+    .section,
+    .img-right,
+    .img-left {
+        grid-column: 1 / -1;
+    }
+
+    .nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 0;
+    }
+
+    .title-hero,
+    .btn-offres {
+        left: 20px;
+    }
+
+    .section {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .section.reverse img,
+    .section.reverse .section-content {
+        order: initial;
+    }
+}
