@@ -24,11 +24,43 @@
             overflow: hidden;
         }
 
-        /* Styles du Spinner individuel */
+        /* --- NOUVEAU : Bouton PDF centré en haut --- */
+        .download-container {
+            position: absolute;
+            top: 3%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+        }
+
+        .download-btn {
+            color: var(--text-color);
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(11, 11, 11, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .download-btn:hover {
+            background: white;
+            color: black;
+            border-color: white;
+        }
+
+        /* Styles du Spinner */
         .slide-content {
             position: relative;
             width: 100%;
-            min-height: 300px; /* Évite que le slide soit plat avant le chargement */
+            min-height: 300px;
             background-color: var(--card-bg);
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
             display: flex;
@@ -41,7 +73,7 @@
             width: 30px;
             height: 30px;
             border: 2px solid rgba(0, 0, 0, 0.1);
-            border-top: 2px solid #333; /* Noir sur fond blanc du card-bg */
+            border-top: 2px solid #333;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             position: absolute;
@@ -61,13 +93,8 @@
             z-index: 2;
         }
 
-        /* Classe appliquée quand l'image est chargée */
-        .img-loaded img {
-            opacity: 1;
-        }
-        .img-loaded .inner-spinner {
-            display: none;
-        }
+        .img-loaded img { opacity: 1; }
+        .img-loaded .inner-spinner { display: none; }
 
         /* Header & Footer */
         header, footer {
@@ -100,7 +127,6 @@
             border-right: 1px solid white;
             transform: rotate(45deg);
         }
-        
         .arrow-left { transform: scaleX(-1); }
 
         .nav-controls {
@@ -139,18 +165,26 @@
         }
 
         @media (max-width: 768px) {
-            .swiper-slide { width: 280px; }
+            .swiper-slide { width: 80vw; }
             .arrow-icon { width: 40px; }
             .slide-content { min-height: 150px; }
+            .download-container { top: 12%; } /* Ajusté pour ne pas chevaucher le logo sur mobile */
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div><img width="70px" src="logo.png"/></div>
+        <div><img width="70px" src="logo.png" alt="Logo"/></div>
         <div>Graphiste - Designer graphique</div>
     </header>
+
+    <div class="download-container">
+        <a href="portfolio_medium.pdf" download class="download-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Version PDF</span>
+        </a>
+    </div>
 
     <main class="swiper mySwiper">
         <div class="swiper-wrapper" id="slider-wrapper"></div>
@@ -161,7 +195,7 @@
         
         <div class="nav-controls">
             <div class="arrow-icon arrow-left" id="prevBtn"></div>
-            <div id="page-number">01 / 29</div>
+            <div id="page-number">01 / 31</div>
             <div class="arrow-icon" id="nextBtn"></div>
         </div>
 
@@ -174,7 +208,6 @@
         const wrapper = document.getElementById('slider-wrapper');
         const totalSlides = 31;
 
-        // Génération des slides avec spinner interne
         for (let i = 1; i <= totalSlides; i++) {
             const index = i.toString().padStart(2, '0');
             const slide = `
@@ -187,7 +220,6 @@
             wrapper.innerHTML += slide;
         }
 
-        // Initialisation Swiper
         var swiper = new Swiper(".mySwiper", {
             effect: "coverflow",
             grabCursor: true,
