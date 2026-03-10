@@ -3,9 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manolo Raj - Portfolio</title>
+    
+    <title>Manolo Raj | Portfolio Graphiste & Designer Visuel</title>
+    <meta name="description" content="Découvrez le portfolio de Manolo Rajaonah (Manolo Raj), graphiste spécialisé en design visuel, print et digital. Explorez mes créations et téléchargez mon book.">
+    <meta name="keywords" content="Manolo Raj, Manolo Rajaonah, graphiste, portfolio, design graphique, designer Alma, Québec, Madagascar, webdesign">
+    <link rel="canonical" href="https://manolorajaonah.github.io/portfolio/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://manolorajaonah.github.io/portfolio/">
+    <meta property="og:title" content="Manolo Raj | Portfolio Graphiste">
+    <meta property="og:description" content="Exploration visuelle et projets de design graphique par Manolo Rajaonah.">
+    <meta property="og:image" content="https://manolorajaonah.github.io/portfolio/images/fbc8a8a3-01.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Manolo Raj | Portfolio">
+    <meta name="twitter:description" content="Portfolio créatif de Manolo Rajaonah.">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Manolo Rajaonah",
+      "alternateName": "Manolo Raj",
+      "jobTitle": "Graphiste",
+      "url": "https://manolorajaonah.github.io/portfolio/",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Alma",
+        "addressRegion": "Québec",
+        "addressCountry": "CA"
+      },
+      "sameAs": [
+        "https://www.instagram.com/manolo.raj/",
+        "https://www.behance.net/manolorajaonah"
+      ],
+      "email": "manolo.rajaonah@gmail.com"
+    }
+    </script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="icon" type="image/png" href="logo.png">
+    
     <style>
         :root {
             --bg-color: #0b0b0b;
@@ -24,7 +62,19 @@
             overflow: hidden;
         }
 
-        /* --- NOUVEAU : Bouton PDF centré en haut --- */
+        /* Accessibilité : Titre caché pour le SEO */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
         .download-container {
             position: absolute;
             top: 3%;
@@ -56,7 +106,6 @@
             border-color: white;
         }
 
-        /* Styles du Spinner */
         .slide-content {
             position: relative;
             width: 100%;
@@ -96,7 +145,6 @@
         .img-loaded img { opacity: 1; }
         .img-loaded .inner-spinner { display: none; }
 
-        /* Header & Footer */
         header, footer {
             padding: 3% 5%;
             display: flex;
@@ -107,6 +155,16 @@
             letter-spacing: 0.15em;
             font-weight: 300;
         }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            margin-right: 15px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .social-links a:hover { opacity: 1; }
 
         .arrow-icon {
             width: 60px;
@@ -141,7 +199,6 @@
             font-variant-numeric: tabular-nums;
         }
 
-        /* Slider Container */
         .swiper {
             width: 100%;
             flex-grow: 1;
@@ -168,15 +225,22 @@
             .swiper-slide { width: 80vw; }
             .arrow-icon { width: 40px; }
             .slide-content { min-height: 150px; }
-            .download-container { top: 12%; } /* Ajusté pour ne pas chevaucher le logo sur mobile */
+            .download-container { top: 12%; }
+            .social-links { display: none; } /* On cache les liens texte sur mobile pour l'espace */
         }
     </style>
 </head>
 <body>
 
+    <h1 class="sr-only">Manolo Rajaonah - Portfolio de Design Graphique</h1>
+
     <header>
-        <div><img width="70px" src="logo.png" alt="Logo"/></div>
-        <div><a href="mailto:manolo.rajaonah@gmail.com" style="color:white; text-decoration: none;">manolo.rajaonah@gmail.com</a></div>
+        <div><img width="70px" src="logo.png" alt="Logo Manolo Raj"/></div>
+        <div class="social-links">
+            <a href="https://www.behance.net/manolorajaonah" target="_blank">Behance</a>
+            <a href="https://www.instagram.com/manolo.raj/" target="_blank">Instagram</a>
+            <a href="mailto:manolo.rajaonah@gmail.com">Contact</a>
+        </div>
     </header>
 
     <div class="download-container">
@@ -191,15 +255,15 @@
     </main>
 
     <footer>
-        <div id="slide-name">PORTFOLIO GRAPHISTE</div>
+        <div id="slide-name">GRAPHIC DESIGNER</div>
         
         <div class="nav-controls">
-            <div class="arrow-icon arrow-left" id="prevBtn"></div>
-            <div id="page-number">01 / 31</div>
-            <div class="arrow-icon" id="nextBtn"></div>
+            <div class="arrow-icon arrow-left" id="prevBtn" role="button" aria-label="Précédent"></div>
+            <div id="page-number" aria-live="polite">01 / 31</div>
+            <div class="arrow-icon" id="nextBtn" role="button" aria-label="Suivant"></div>
         </div>
 
-        <div>Manolo RAJAONAH </div>
+        <div>&copy; 2026 Manolo Rajaonah</div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -208,13 +272,18 @@
         const wrapper = document.getElementById('slider-wrapper');
         const totalSlides = 31;
 
+        // Génération des slides avec ALT text optimisé pour le SEO
         for (let i = 1; i <= totalSlides; i++) {
             const index = i.toString().padStart(2, '0');
             const slide = `
                 <div class="swiper-slide">
                     <div class="slide-content" id="container-${index}">
                         <div class="inner-spinner"></div>
-                        <img src="images/fbc8a8a3-${index}.png" alt="Asset ${index}" onload="this.parentElement.classList.add('img-loaded')">
+                        <img 
+                            src="images/fbc8a8a3-${index}.png" 
+                            alt="Création graphique Manolo Raj - Projet ${index}" 
+                            loading="lazy"
+                            onload="this.parentElement.classList.add('img-loaded')">
                     </div>
                 </div>`;
             wrapper.innerHTML += slide;
