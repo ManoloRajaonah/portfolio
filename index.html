@@ -9,6 +9,8 @@
     <meta name="keywords" content="Manolo Raj, Manolo Rajaonah, graphiste, portfolio, design graphique, designer Alma, Québec, Madagascar, webdesign">
     <link rel="canonical" href="https://manolorajaonah.github.io/portfolio/">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://manolorajaonah.github.io/portfolio/">
     <meta property="og:title" content="Manolo Raj | Portfolio Graphiste">
@@ -62,7 +64,6 @@
             overflow: hidden;
         }
 
-        /* Accessibilité : Titre caché pour le SEO */
         .sr-only {
             position: absolute;
             width: 1px;
@@ -73,6 +74,37 @@
             clip: rect(0, 0, 0, 0);
             white-space: nowrap;
             border-width: 0;
+        }
+
+        header, footer {
+            padding: 2% 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-transform: lowercase;
+            font-size: 13px;
+            letter-spacing: 0.15em;
+            font-weight: 300;
+        }
+
+        /* --- Style des Icônes Sociales --- */
+        .social-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px; /* Taille des icônes */
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-2px);
         }
 
         .download-container {
@@ -145,27 +177,6 @@
         .img-loaded img { opacity: 1; }
         .img-loaded .inner-spinner { display: none; }
 
-        header, footer {
-            padding: 3% 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            text-transform: lowercase;
-            font-size: 13px;
-            letter-spacing: 0.15em;
-            font-weight: 300;
-        }
-
-        .social-links a {
-            color: white;
-            text-decoration: none;
-            margin-right: 15px;
-            opacity: 0.7;
-            transition: opacity 0.3s;
-        }
-
-        .social-links a:hover { opacity: 1; }
-
         .arrow-icon {
             width: 60px;
             height: 1px;
@@ -225,8 +236,9 @@
             .swiper-slide { width: 80vw; }
             .arrow-icon { width: 40px; }
             .slide-content { min-height: 150px; }
-            .download-container { top: 12%; }
-            .social-links { display: none; } /* On cache les liens texte sur mobile pour l'espace */
+            .download-container { top: 11%; }
+            .social-links { gap: 15px; }
+            header, footer { padding: 5% 5%; }
         }
     </style>
 </head>
@@ -235,17 +247,23 @@
     <h1 class="sr-only">Manolo Rajaonah - Portfolio de Design Graphique</h1>
 
     <header>
-        <div><img width="70px" src="logo.png" alt="Logo Manolo Raj"/></div>
+        <div><img width="60px" src="logo.png" alt="Logo Manolo Raj"/></div>
         <div class="social-links">
-            <a href="https://www.behance.net/manolorajaonah" target="_blank">Behance</a>
-            <a href="https://www.instagram.com/manolo.raj/" target="_blank">Instagram</a>
-            <a href="mailto:manolo.rajaonah@gmail.com">Contact</a>
+            <a href="https://www.behance.net/manolorajaonah" target="_blank" title="Behance">
+                <i class="fa-brands fa-behance"></i>
+            </a>
+            <a href="https://www.instagram.com/manolo.raj/" target="_blank" title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="mailto:manolo.rajaonah@gmail.com" title="Contact Email">
+                <i class="fa-regular fa-envelope"></i>
+            </a>
         </div>
     </header>
 
     <div class="download-container">
         <a href="portfolio_medium.pdf" download class="download-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <i class="fa-solid fa-arrow-down-open-pill"></i>
             <span>Version PDF</span>
         </a>
     </div>
@@ -272,7 +290,6 @@
         const wrapper = document.getElementById('slider-wrapper');
         const totalSlides = 31;
 
-        // Génération des slides avec ALT text optimisé pour le SEO
         for (let i = 1; i <= totalSlides; i++) {
             const index = i.toString().padStart(2, '0');
             const slide = `
