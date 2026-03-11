@@ -24,227 +24,236 @@
     <meta name="twitter:description" content="Design visuel et interfaces web modernes.">
 
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Manolo Rajaonah",
-      "alternateName": "Manolo Raj",
-      "url": "https://manoloraj.netlify.app/",
-      "jobTitle": ["Designer Graphique", "Web Designer", "Développeur Front-End"],
-      "description": "Designer visuel et développeur spécialisé en branding et interfaces numériques, opérant au Saguenay, au Québec et à travers le Canada.",
-      "knowsAbout": ["Design Graphique", "UI/UX Design", "Développement Web", "Branding", "Adobe Creative Suite", "Figma"],
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Alma",
-        "addressRegion": "Québec",
-        "addressCountry": "CA"
-      },
-      "sameAs": [
-        "https://www.instagram.com/manolo.raj/",
-        "https://www.behance.net/manolorajaonah"
-      ],
-      "email": "manolo.rajaonah@gmail.com"
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Manolo Rajaonah",
+          "alternateName": "Manolo Raj",
+          "url": "https://manoloraj.netlify.app/",
+          "jobTitle": ["Designer Graphique", "Web Designer", "Développeur Front-End"],
+          "description": "Designer visuel et développeur spécialisé en branding et interfaces numériques, opérant au Saguenay, au Québec et à travers le Canada.",
+          "knowsAbout": ["Design Graphique", "UI/UX Design", "Développement Web", "Branding", "Adobe Creative Suite", "Figma"],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Alma",
+            "addressRegion": "Québec",
+            "addressCountry": "CA"
+        },
+        "sameAs": [
+            "https://www.instagram.com/manolo.raj/",
+            "https://www.behance.net/manolorajaonah"
+        ],
+        "email": "manolo.rajaonah@gmail.com"
     }
-    </script>
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C24J03ZDKQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="icon" type="image/png" href="logo.png">
-    
-    <style>
-        :root {
-            --bg-color: #0b0b0b;
-            --card-bg: #ffffff;
-            --text-color: #ffffff;
-        }
+  gtag('config', 'G-C24J03ZDKQ');
+</script>
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link rel="icon" type="image/png" href="logo.png">
 
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
+<style>
+    :root {
+        --bg-color: #0b0b0b;
+        --card-bg: #ffffff;
+        --text-color: #ffffff;
+    }
 
-        header, footer {
-            padding: 2% 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            text-transform: lowercase;
-            font-size: 13px;
-            letter-spacing: 0.15em;
-            font-weight: 300;
-        }
+    body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        margin: 0;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
 
-        .social-links {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
 
-        .social-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            opacity: 0.6;
-            transition: all 0.3s ease;
-        }
+    header, footer {
+        padding: 2% 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-transform: lowercase;
+        font-size: 13px;
+        letter-spacing: 0.15em;
+        font-weight: 300;
+    }
 
-        .social-links a:hover {
-            opacity: 1;
-            transform: translateY(-2px);
-        }
+    .social-links {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
 
-        .download-container {
-            position: absolute;
-            top: 3%;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 100;
-        }
+    .social-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        opacity: 0.6;
+        transition: all 0.3s ease;
+    }
 
-        .download-btn {
-            color: var(--text-color);
-            text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 11px;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(11, 11, 11, 0.5);
-            backdrop-filter: blur(5px);
-        }
+    .social-links a:hover {
+        opacity: 1;
+        transform: translateY(-2px);
+    }
 
-        .download-btn:hover {
-            background: white;
-            color: black;
-            border-color: white;
-        }
+    .download-container {
+        position: absolute;
+        top: 3%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+    }
 
-        .slide-content {
-            position: relative;
-            width: 100%;
-            min-height: 300px;
-            background-color: var(--card-bg);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
+    .download-btn {
+        color: var(--text-color);
+        text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 10px 20px;
+        border-radius: 30px;
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(11, 11, 11, 0.5);
+        backdrop-filter: blur(5px);
+    }
 
-        .inner-spinner {
-            width: 30px;
-            height: 30px;
-            border: 2px solid rgba(0, 0, 0, 0.1);
-            border-top: 2px solid #333;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            position: absolute;
-        }
+    .download-btn:hover {
+        background: white;
+        color: black;
+        border-color: white;
+    }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+    .slide-content {
+        position: relative;
+        width: 100%;
+        min-height: 300px;
+        background-color: var(--card-bg);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
 
-        .slide-content img {
-            width: 100%;
-            height: auto;
-            display: block;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            z-index: 2;
-        }
+    .inner-spinner {
+        width: 30px;
+        height: 30px;
+        border: 2px solid rgba(0, 0, 0, 0.1);
+        border-top: 2px solid #333;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        position: absolute;
+    }
 
-        .img-loaded img { opacity: 1; }
-        .img-loaded .inner-spinner { display: none; }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
 
-        .arrow-icon {
-            width: 60px;
-            height: 1px;
-            background: white;
-            position: relative;
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
-        .arrow-icon::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: -3px;
-            width: 6px;
-            height: 6px;
-            border-top: 1px solid white;
-            border-right: 1px solid white;
-            transform: rotate(45deg);
-        }
-        .arrow-left { transform: scaleX(-1); }
+    .slide-content img {
+        width: 100%;
+        height: auto;
+        display: block;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        z-index: 2;
+    }
 
-        .nav-controls {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
+    .img-loaded img { opacity: 1; }
+    .img-loaded .inner-spinner { display: none; }
 
-        #page-number {
-            min-width: 50px;
-            text-align: center;
-            font-variant-numeric: tabular-nums;
-        }
+    .arrow-icon {
+        width: 60px;
+        height: 1px;
+        background: white;
+        position: relative;
+        cursor: pointer;
+        transition: opacity 0.3s;
+    }
+    .arrow-icon::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: -3px;
+        width: 6px;
+        height: 6px;
+        border-top: 1px solid white;
+        border-right: 1px solid white;
+        transform: rotate(45deg);
+    }
+    .arrow-left { transform: scaleX(-1); }
 
-        .swiper {
-            width: 100%;
-            flex-grow: 1;
-            padding: 50px 0;
-        }
+    .nav-controls {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
 
-        .swiper-slide {
-            width: 50vw;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            opacity: 0.2;
-            filter: grayscale(100%);
-        }
+    #page-number {
+        min-width: 50px;
+        text-align: center;
+        font-variant-numeric: tabular-nums;
+    }
 
-        .swiper-slide-active {
-            opacity: 1;
-            filter: grayscale(0%);
-            transform: scale(1.1);
-        }
+    .swiper {
+        width: 100%;
+        flex-grow: 1;
+        padding: 50px 0;
+    }
 
-        @media (max-width: 768px) {
-            .swiper-slide { width: 80vw; }
-            .arrow-icon { width: 40px; }
-            .slide-content { min-height: 150px; }
-            .download-container { top: 11%; }
-            .social-links { gap: 15px; }
-            header, footer { padding: 5% 5%; }
-        }
-    </style>
+    .swiper-slide {
+        width: 50vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        opacity: 0.2;
+        filter: grayscale(100%);
+    }
+
+    .swiper-slide-active {
+        opacity: 1;
+        filter: grayscale(0%);
+        transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+        .swiper-slide { width: 80vw; }
+        .arrow-icon { width: 40px; }
+        .slide-content { min-height: 150px; }
+        .download-container { top: 11%; }
+        .social-links { gap: 15px; }
+        header, footer { padding: 5% 5%; }
+    }
+</style>
 </head>
 <body>
 
@@ -309,7 +318,7 @@
                             loading="lazy"
                             onload="this.parentElement.classList.add('img-loaded')">
                     </article>
-                </div>`;
+            </div>`;
             wrapper.innerHTML += slide;
         }
 
