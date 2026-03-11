@@ -4,22 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Manolo Raj | Portfolio Graphiste & Designer Visuel</title>
-    <meta name="description" content="Découvrez le portfolio de Manolo Rajaonah (Manolo Raj), graphiste spécialisé en design visuel, print et digital. Explorez mes créations et téléchargez mon book.">
-    <meta name="keywords" content="Manolo Raj, Manolo Rajaonah, graphiste, portfolio, design graphique, designer Alma, Québec, Madagascar, webdesign">
-    <link rel="canonical" href="https://manolorajaonah.github.io/portfolio/">
+    <title>Manolo Raj | Designer Graphique & Web | Développeur Front-End Saguenay & Québec</title>
+    <meta name="description" content="Portfolio de Manolo Rajaonah (Manolo Raj), expert en design graphique, UI/UX et développement web. Services créatifs au Saguenay–Lac-Saint-Jean, au Québec et au Canada. Identité visuelle, branding et solutions digitales.">
+    <meta name="keywords" content="Manolo Raj, Manolo Rajaonah, designer graphique Saguenay, web designer Lac-Saint-Jean, graphiste Québec, développeur web Canada, UI/UX designer, conception de logo, branding, portfolio design, Graphic Designer Canada, Web Developer Quebec">
+    <meta name="author" content="Manolo Rajaonah">
+    <meta name="robots" content="index, follow">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="canonical" href="https://manoloraj.netlify.app/">
 
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://manolorajaonah.github.io/portfolio/">
-    <meta property="og:title" content="Manolo Raj | Portfolio Graphiste">
-    <meta property="og:description" content="Exploration visuelle et projets de design graphique par Manolo Rajaonah.">
-    <meta property="og:image" content="https://manolorajaonah.github.io/portfolio/images/fbc8a8a3-01.png">
+    <meta property="og:url" content="https://manoloraj.netlify.app/">
+    <meta property="og:title" content="Manolo Raj | Designer Graphique & Web au Québec">
+    <meta property="og:description" content="Exploration visuelle et solutions numériques par Manolo Rajaonah. Basé au Saguenay, disponible partout au Canada.">
+    <meta property="og:image" content="https://manoloraj.netlify.app/images/fbc8a8a3-01.png">
+    <meta property="og:site_name" content="Manolo Raj Portfolio">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Manolo Raj | Portfolio">
-    <meta name="twitter:description" content="Portfolio créatif de Manolo Rajaonah.">
+    <meta name="twitter:title" content="Manolo Raj | Portfolio Créatif">
+    <meta name="twitter:description" content="Design visuel et interfaces web modernes.">
 
     <script type="application/ld+json">
     {
@@ -27,8 +29,10 @@
       "@type": "Person",
       "name": "Manolo Rajaonah",
       "alternateName": "Manolo Raj",
-      "jobTitle": "Graphiste",
-      "url": "https://manolorajaonah.github.io/portfolio/",
+      "url": "https://manoloraj.netlify.app/",
+      "jobTitle": ["Designer Graphique", "Web Designer", "Développeur Front-End"],
+      "description": "Designer visuel et développeur spécialisé en branding et interfaces numériques, opérant au Saguenay, au Québec et à travers le Canada.",
+      "knowsAbout": ["Design Graphique", "UI/UX Design", "Développement Web", "Branding", "Adobe Creative Suite", "Figma"],
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Alma",
@@ -43,6 +47,7 @@
     }
     </script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="icon" type="image/png" href="logo.png">
     
@@ -87,7 +92,6 @@
             font-weight: 300;
         }
 
-        /* --- Style des Icônes Sociales --- */
         .social-links {
             display: flex;
             gap: 20px;
@@ -97,7 +101,7 @@
         .social-links a {
             color: white;
             text-decoration: none;
-            font-size: 18px; /* Taille des icônes */
+            font-size: 18px;
             opacity: 0.6;
             transition: all 0.3s ease;
         }
@@ -244,44 +248,47 @@
 </head>
 <body>
 
-    <h1 class="sr-only">Manolo Rajaonah - Portfolio de Design Graphique</h1>
+    <h1 class="sr-only">Manolo Raj - Designer Graphique, Web & Développeur Front-End au Saguenay, Québec et Canada</h1>
 
     <header>
-        <div><img width="60px" src="logo.png" alt="Logo Manolo Raj"/></div>
-        <div class="social-links">
+        <div><img width="60px" src="logo.png" alt="Logo Manolo Raj Designer"/></div>
+        <nav class="social-links" aria-label="Réseaux Sociaux">
             <a href="https://www.behance.net/manolorajaonah" target="_blank" title="Behance">
                 <i class="fa-brands fa-behance"></i>
+                <span class="sr-only">Behance</span>
             </a>
             <a href="https://www.instagram.com/manolo.raj/" target="_blank" title="Instagram">
                 <i class="fa-brands fa-instagram"></i>
+                <span class="sr-only">Instagram</span>
             </a>
-            <a href="mailto:manolo.rajaonah@gmail.com" title="Contact Email">
+            <a href="mailto:manolo.rajaonah@gmail.com" title="Email">
                 <i class="fa-regular fa-envelope"></i>
+                <span class="sr-only">Email</span>
             </a>
-        </div>
+        </nav>
     </header>
 
     <div class="download-container">
-        <a href="portfolio_medium.pdf" download class="download-btn">
-            <i class="fa-solid fa-arrow-down-open-pill"></i>
+        <a href="portfolio_medium.pdf" download class="download-btn" title="Télécharger Portfolio PDF">
+            <i class="fa-solid fa-download"></i>
             <span>Version PDF</span>
         </a>
     </div>
 
-    <main class="swiper mySwiper">
+    <main class="swiper mySwiper" aria-label="Galerie de projets">
         <div class="swiper-wrapper" id="slider-wrapper"></div>
     </main>
 
     <footer>
-        <div id="slide-name">GRAPHIC DESIGNER</div>
+        <div id="slide-name">DESIGNER GRAPHIQUE & WEB</div>
         
-        <div class="nav-controls">
+        <nav class="nav-controls" aria-label="Navigation">
             <div class="arrow-icon arrow-left" id="prevBtn" role="button" aria-label="Précédent"></div>
             <div id="page-number" aria-live="polite">01 / 31</div>
             <div class="arrow-icon" id="nextBtn" role="button" aria-label="Suivant"></div>
-        </div>
+        </nav>
 
-        <div>&copy; 2026 Manolo Rajaonah</div>
+        <div>&copy; 2026 Manolo Rajaonah | Saguenay, QC, Canada</div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -294,14 +301,14 @@
             const index = i.toString().padStart(2, '0');
             const slide = `
                 <div class="swiper-slide">
-                    <div class="slide-content" id="container-${index}">
+                    <article class="slide-content" id="container-${index}">
                         <div class="inner-spinner"></div>
                         <img 
                             src="images/fbc8a8a3-${index}.png" 
-                            alt="Création graphique Manolo Raj - Projet ${index}" 
+                            alt="Projet Design Manolo Raj - Création ${index}" 
                             loading="lazy"
                             onload="this.parentElement.classList.add('img-loaded')">
-                    </div>
+                    </article>
                 </div>`;
             wrapper.innerHTML += slide;
         }
