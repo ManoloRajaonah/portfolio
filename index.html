@@ -27,10 +27,6 @@
     <meta property="og:image" content="https://manoloraj.netlify.app/images/fbc8a8a3-01.png">
     <meta property="og:site_name" content="Manolo Raj Portfolio">
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Manolo Raj | Portfolio Créatif">
-    <meta name="twitter:description" content="Design visuel et interfaces web modernes.">
-
     <script type="application/ld+json">
         {
           "@context": "https://schema.org",
@@ -88,17 +84,16 @@
             font-weight: 300;
         }
 
-        /* --- BOUTON SOMMAIRE --- */
+        /* --- UI COMPONENTS --- */
         .menu-toggle {
             background: none; border: none; color: white;
-            cursor: pointer; opacity: 0.6; transition: opacity 0.3s;
+            cursor: pointer; opacity: 0.6; transition: 0.3s;
             display: flex; align-items: center; gap: 10px;
             text-transform: uppercase; font-size: 11px; letter-spacing: 0.2em;
             position: relative; z-index: 100;
         }
         .menu-toggle:hover { opacity: 1; }
 
-        /* --- MENU OVERLAY --- */
         .menu-overlay {
             position: fixed; top: 0; left: -100%;
             width: 320px; height: 100%;
@@ -152,14 +147,25 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
             display: flex; justify-content: center; align-items: center;
         }
-        .slide-content img { width: 100%; height: auto; display: block; opacity: 0; transition: opacity 0.5s; }
+        .slide-content img { width: 100%; height: auto; display: block; opacity: 0; transition: 0.5s; }
         .img-loaded img { opacity: 1; }
 
-        /* --- NAVIGATION ICONS --- */
+        /* --- HEADER ACTIONS --- */
         .social-links { display: flex; gap: 20px; }
         .social-links a { color: white; font-size: 18px; opacity: 0.6; transition: 0.3s; }
         .social-links a:hover { opacity: 1; transform: translateY(-2px); }
         
+        .pdf-link {
+            color: white; text-decoration: none; font-size: 11px;
+            letter-spacing: 0.15em; text-transform: uppercase;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 8px 18px; transition: 0.3s; opacity: 0.7;
+            display: flex; align-items: center; gap: 8px;
+            /* Centre le lien PDF de manière absolue par rapport au header */
+            position: absolute; left: 50%; transform: translateX(-50%);
+        }
+        .pdf-link:hover { opacity: 1; border-color: white; background: rgba(255,255,255,0.1); }
+
         .arrow-icon { width: 60px; height: 1px; background: white; position: relative; cursor: pointer; }
         .arrow-icon::after {
             content: ''; position: absolute; right: 0; top: -3px;
@@ -172,6 +178,8 @@
         @media (max-width: 768px) {
             .swiper-slide { width: 85vw; }
             .menu-overlay { width: 100%; }
+            .pdf-link span { display: none; } /* Mobile : seulement l'icône */
+            .pdf-link { padding: 10px; }
         }
     </style>
 </head>
@@ -185,6 +193,12 @@
                 <span>Sommaire</span>
             </button>
         </div>
+
+        <a href="portfolio_medium.pdf" class="pdf-link" download>
+            <i class="fa-solid fa-file-pdf"></i>
+            <span>Télécharger PDF</span>
+        </a>
+
         <nav class="social-links">
             <a href="https://www.behance.net/manolorajaonah" target="_blank" aria-label="Behance"><i class="fa-brands fa-behance"></i></a>
             <a href="https://www.instagram.com/manolo.raj/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -242,24 +256,18 @@
         const menuOverlay = document.getElementById('menuOverlay');
         const toggleBtn = document.getElementById('toggleBtn');
 
-        // 1. GÉNÉRATION DES SLIDES
+        // Génération des slides
         const fragment = document.createDocumentFragment();
         for (let i = 1; i <= CONFIG.totalSlides; i++) {
             const index = i.toString().padStart(2, '0');
             const slide = document.createElement('div');
             slide.className = 'swiper-slide';
-            slide.innerHTML = `
-                <article class="slide-content">
-                    <img src="${CONFIG.baseImgPath}${index}.png" 
-                         alt="Projet de Design Manolo Raj - ${index}"
-                         loading="lazy" 
-                         onload="this.parentElement.classList.add('img-loaded')">
-                </article>`;
+            slide.innerHTML = `<article class="slide-content"><img src="${CONFIG.baseImgPath}${index}.png" alt="Projet Manolo Raj - ${index}" loading="lazy" onload="this.parentElement.classList.add('img-loaded')"></article>`;
             fragment.appendChild(slide);
         }
         wrapper.appendChild(fragment);
 
-        // 2. GÉNÉRATION DU MENU
+        // Génération du menu
         CONFIG.menuItems.forEach(item => {
             const li = document.createElement('li');
             if (item.type === 'title') {
@@ -275,7 +283,7 @@
             menuList.appendChild(li);
         });
 
-        // 3. INITIALISATION SWIPER
+        // Initialisation Swiper
         var swiper = new Swiper(".mySwiper", {
             effect: "coverflow",
             centeredSlides: true,
@@ -288,8 +296,7 @@
             on: {
                 slideChange: function () {
                     const current = (this.realIndex + 1).toString().padStart(2, '0');
-                    const total = CONFIG.totalSlides.toString().padStart(2, '0');
-                    document.getElementById('page-number').innerText = `${current} / ${total}`;
+                    document.getElementById('page-number').innerText = `${current} / ${CONFIG.totalSlides.toString().padStart(2, '0')}`;
                 },
                 transitionEnd: function() {
                     if (window.isMenuNavigation) {
@@ -300,7 +307,6 @@
             }
         });
 
-        // 4. NAVIGATION & EVENTS
         const toggleMenu = (e) => {
             if(e) e.stopPropagation();
             menuOverlay.classList.toggle('active');
@@ -314,16 +320,11 @@
         function goToSlide(number, element) {
             window.isMenuNavigation = true; 
             menuOverlay.classList.remove('active');
-            
             document.querySelectorAll('#menuList a').forEach(l => l.classList.remove('active-link'));
             element.classList.add('active-link');
-
-            setTimeout(() => {
-                swiper.slideToLoop(number - 1);
-            }, 150);
+            setTimeout(() => swiper.slideToLoop(number - 1), 150);
         }
 
-        // Fermeture clic extérieur
         document.addEventListener('click', (e) => {
             if (menuOverlay.classList.contains('active') && !menuOverlay.contains(e.target) && !toggleBtn.contains(e.target)) {
                 menuOverlay.classList.remove('active');
