@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C24J03ZDKQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C24J03ZDKQ');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manolo Raj | Portfolio</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <style>
+        :root {
+            --bg-color: #0b0b0b;
+            --card-bg: #ffffff;
+            --text-color: #ffffff;
+            --accent-color: rgba(255, 255, 255, 0.4);
+            --transition-main: 0.8s cubic-bezier(0.25, 1, 0.3, 1);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        header, footer {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .pdf-link {
+            color: white; text-decoration: none; font-size: 11px;
+            letter-spacing: 0.15em; text-transform: uppercase;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 8px 18px; transition: 0.3s; opacity: 0.7;
+            position: absolute; left: 50%; transform: translateX(-50%);
+            display: flex; align-items: center; gap: 8px;
+        }
+        .pdf-link:hover { opacity: 1; border-color: white; background: rgba(255,255,255,0.1); }
+
+        .nav-controls {
+            display: flex; align-items: center; gap: 30px;
+            position: absolute; left: 50%; transform: translateX(-50%);
+        }
+
+        .menu-toggle {
+            background: none; border: none; color: white;
+            cursor: pointer; opacity: 0.6; transition: 0.3s;
+            display: flex; align-items: center; gap: 10px;
+            text-transform: uppercase; font-size: 11px; letter-spacing: 0.2em;
+            z-index: 2100;
+        }
+
+        .menu-overlay {
+            position: fixed; top: 0; left: 0;
+            width: 320px; height: 100%;
+            background: rgba(11, 11, 11, 0.98); backdrop-filter: blur(15px);
+            z-index: 2000; transition: transform var(--transition-main); padding: 40px;
+            overflow-y: auto;
+            box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+        }
+        .menu-overlay.closed { transform: translateX(-100%); }
+
+        .menu-overlay ul { list-style: none; padding: 0; margin: 0; }
+        .menu-section-title { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent-color); margin: 25px 0 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px; display: block; }
+        .menu-overlay li a { color: white; text-decoration: none; font-size: 14px; display: block; padding: 8px 0; opacity: 0.7; transition: 0.3s; font-weight: 300; }
+        .menu-overlay li a:hover { opacity: 1; transform: translateX(8px); }
+
+        .swiper { width: 100%; flex-grow: 1; display: flex; align-items: center; }
+        .swiper-slide {
+            width: 50vw; display: flex; justify-content: center; align-items: center;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            opacity: 0.15; filter: grayscale(100%);
+        }
+        .swiper-slide-active { opacity: 1; filter: grayscale(0%); transform: scale(1.05); }
+        .slide-content { width: 100%; background-color: var(--card-bg); box-shadow: 0 20px 50px rgba(0,0,0,0.5); position: relative; }
+        .slide-content img { width: 100%; height: auto; display: block; opacity: 0; transition: opacity 0.5s; }
+        .swiper-slide.img-loaded img { opacity: 1; }
+
+        #action-popup {
+            position: fixed; bottom: 100px; left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: white; color: black; padding: 12px 25px;
+            border-radius: 50px; font-size: 11px; font-weight: 700;
+            text-transform: uppercase; text-decoration: none;
+            display: flex; align-items: center; gap: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            z-index: 900; opacity: 0; pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.3, 1);
+        }
+        #action-popup.visible { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+        .software-icons { display: flex; gap: 10px; font-size: 18px; border-left: 1px solid #ddd; padding-left: 12px; }
+
+        .social-links { display: flex; gap: 20px; }
+        .social-links a { color: white; font-size: 18px; opacity: 0.6; transition: 0.3s; }
+        .arrow-icon { width: 50px; height: 1px; background: white; position: relative; cursor: pointer; opacity: 0.5; transition: 0.3s; }
+        .arrow-icon:hover { opacity: 1; }
+        .arrow-icon::after { content: ''; position: absolute; right: 0; top: -3px; width: 6px; height: 6px; border-top: 1px solid white; border-right: 1px solid white; transform: rotate(45deg); }
+        .arrow-left { transform: scaleX(-1); }
+
+        @media (max-width: 768px) {
+            .swiper-slide { width: 85vw; height: 70vh; }
+            .menu-overlay { width: 100%; }
+            .pdf-link span, .menu-toggle span, footer div:not(.nav-controls) { display: none; }
+            .nav-controls { position: static; transform: none; width: 100%; justify-content: center; }
+            #action-popup { bottom: 80px; width: 85%; justify-content: center; font-size: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <img width="45px" src="logo.png" alt="Logo">
+            <button class="menu-toggle" id="toggleBtn">
+                <i class="fa-solid fa-list-ul"></i>
+                <span>Sommaire</span>
+            </button>
+        </div>
+        <a href="portfolio_ui_ux.pdf" class="pdf-link" download>
+            <i class="fa-solid fa-file-pdf"></i>
+            <span>Télécharger PDF</span>
+        </a>
+        <nav class="social-links">
+            <a href="https://www.behance.net/manolorajaonah" target="_blank"><i class="fa-brands fa-behance"></i></a>
+            <a href="https://www.instagram.com/manolo.raj/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="mailto:manolo.rajaonah@gmail.com"><i class="fa-regular fa-envelope"></i></a>
+        </nav>
+    </header>
+
+    <nav class="menu-overlay" id="menuOverlay">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <img src="logo.png" width="55px" style="opacity: 0.8;">
+            <div style="font-size: 9px; letter-spacing: 0.3em; margin-top: 10px; opacity: 0.5;">PORTFOLIO 2026</div>
+        </div>
+        <ul id="menuList"></ul>
+    </nav>
+
+    <a href="#" target="_blank" id="action-popup">
+        <span id="popup-text">Action</span>
+        <div class="software-icons" id="popup-icons"></div>
+    </a>
+
+    <main class="swiper mySwiper">
+        <div class="swiper-wrapper" id="slider-wrapper"></div>
+    </main>
+
+    <footer>
+        <div style="opacity: 0.3; font-size: 10px;">DESIGNER GRAPHIQUE & WEB</div>
+        <nav class="nav-controls">
+            <div class="arrow-icon arrow-left" id="prevBtn"></div>
+            <div id="page-number" style="font-weight: 500; min-width: 80px; text-align: center; font-size: 13px;">01 / 31</div>
+            <div class="arrow-icon" id="nextBtn"></div>
+        </nav>
+        <div style="opacity: 0.3; font-size: 10px;">© 2026 MANOLO RAJ</div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const CONFIG = {
+            totalSlides: 31,
+            baseImgPath: 'images_ui_ux/portfolio_Ubisoft-',
+            pageActions: {
+                5: { text: "Prototype interactif", link: "https://www.figma.com/proto/sZqu4QpoeSU9zFXIVRX7HI/Projets-UI-UX?node-id=23-346", icons: ['fa-brands fa-figma'] },
+                6: { text: "Visitez le site", link: "https://manolorajaonah.github.io/portfolio/coiffure/", icons: ['fa-solid fa-globe'] },
+                13: { text: "Voir l'animation", link: "https://www.instagram.com/reel/DTrhakigrBd/", icons: ['fa-solid fa-cube', 'fa-solid fa-film'] },
+                16: { text: "Voir l'animation", link: "https://www.instagram.com/p/DJHKGvFsZ6L/", icons: ['fa-solid fa-cube', 'fa-solid fa-film'] },
+                19: { text: "Voir l'animation", link: "https://www.instagram.com/reel/DUL8Nw9gncY/", icons: ['fa-solid fa-cube', 'fa-solid fa-film'] }
+            },
+            menuItems: [
+                { type: 'title', label: 'WEB & UI/UX' },
+                { type: 'link', label: 'Expérience Utilisateur', slide: 4 },
+                { type: 'link', label: 'Site Salon de coiffure', slide: 7 },
+                { type: 'link', label: 'UI/UX Épicerie & Crèmerie', slide: 10 },
+                { type: 'title', label: 'MISE EN PAGE & PACKAGING' },
+                { type: 'link', label: 'Armona', slide: 13 },
+                { type: 'link', label: 'Pochette d’album', slide: 16 },
+                { type: 'link', label: 'Jeu de cartes', slide: 19 },
+                { type: 'title', label: 'LOGOS & TATTOOS' },
+                { type: 'link', label: 'Logofolio', slide: 21 },
+                { type: 'link', label: 'Tattoofolio', slide: 24 },
+                { type: 'title', label: 'AFFICHES & ÉTIQUETTES' },
+                { type: 'link', label: 'Affiche HIP HOP', slide: 29 },
+                { type: 'link', label: 'Brasserie d’Alma', slide: 31 }
+            ]
+        };
+
+        const wrapper = document.getElementById('slider-wrapper');
+        for (let i = 1; i <= CONFIG.totalSlides; i++) {
+            const index = i.toString().padStart(2, '0');
+            const slide = document.createElement('div');
+            slide.className = 'swiper-slide';
+            slide.innerHTML = `<article class="slide-content"><img src="${CONFIG.baseImgPath}${index}.png" onload="this.parentElement.parentElement.classList.add('img-loaded')"></article>`;
+            wrapper.appendChild(slide);
+        }
+
+        const isMobile = window.innerWidth <= 768;
+
+        var swiper = new Swiper(".mySwiper", {
+            direction: isMobile ? 'vertical' : 'horizontal',
+            centeredSlides: true,
+            slidesPerView: "auto",
+            loop: true,
+            speed: 600, // Légèrement plus rapide pour la réactivité
+            mousewheel: {
+                sensitivity: 1, // Réactivité maximale
+                releaseOnEdges: true,
+            },
+            keyboard: true,
+            effect: isMobile ? 'slide' : 'coverflow',
+            coverflowEffect: { rotate: 0, stretch: 0, depth: 150, modifier: 1, slideShadows: false },
+            on: {
+                slideChange: function () {
+                    const realIdx = this.realIndex + 1;
+                    document.getElementById('page-number').innerText = `${realIdx.toString().padStart(2, '0')} / ${CONFIG.totalSlides}`;
+                    const action = CONFIG.pageActions[realIdx];
+                    const popup = document.getElementById('action-popup');
+                    if (action) {
+                        popup.href = action.link;
+                        document.getElementById('popup-text').innerText = action.text;
+                        document.getElementById('popup-icons').innerHTML = action.icons.map(icon => `<i class="${icon}"></i>`).join('');
+                        popup.classList.add('visible');
+                    } else {
+                        popup.classList.remove('visible');
+                    }
+                }
+            }
+        });
+
+        const menuOverlay = document.getElementById('menuOverlay');
+        CONFIG.menuItems.forEach(item => {
+            const li = document.createElement('li');
+            if (item.type === 'title') {
+                li.className = 'menu-section-title'; li.textContent = item.label;
+            } else {
+                const a = document.createElement('a');
+                a.href = "#"; a.textContent = item.label;
+                a.onclick = (e) => {
+                    e.preventDefault();
+                    swiper.slideToLoop(item.slide - 1);
+                    if(isMobile) menuOverlay.classList.add('closed');
+                };
+                li.appendChild(a);
+            }
+            document.getElementById('menuList').appendChild(li);
+        });
+
+        document.getElementById('toggleBtn').onclick = (e) => { e.stopPropagation(); menuOverlay.classList.toggle('closed'); };
+        document.addEventListener('click', (e) => { if (!menuOverlay.contains(e.target)) menuOverlay.classList.add('closed'); });
+        
+        document.getElementById('prevBtn').onclick = () => swiper.slidePrev();
+        document.getElementById('nextBtn').onclick = () => swiper.slideNext();
+
+        window.onresize = () => { if(window.innerWidth <= 768 !== isMobile) location.reload(); };
+    </script>
+</body>
+</html>
